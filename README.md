@@ -1,4 +1,4 @@
-2015阿里巴巴天池大数据竞赛-阿里移动推荐算法
+2015阿里巴巴天池大数据竞赛-阿里移动推荐
 ===
 
 **竞赛介绍：**[链接](http://tianchi.aliyun.com/competition/introduction.htm?spm=5176.100066.333.2.umhl4N&raceId=1)
