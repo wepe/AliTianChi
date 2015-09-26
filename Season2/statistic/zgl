@@ -1,0 +1,5 @@
+--从everbuy_18jgwc计算得到每个用户的转够率
+create table user_zgl
+as select user_id,cast(jgwc as double) as jgwc,cast(gm as double) as gm,gm/jgwc as zgl,18jgwc from everbuy_18jgwc
+order by zgl desc,18jgwc desc
+limit 100000000

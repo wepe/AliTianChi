@@ -1,0 +1,240 @@
+-- drop table if exists  temp1;
+-- create table temp1 as select user_id,item_id,ui_b1,ui_b2,ui_b3 from 17_ui_behavior_sum;
+
+-- drop table if exists  temp2;
+-- create table temp2 as select 
+-- a.*,
+-- b.ui_b1h0,b.ui_b1h1,b.ui_b1h2,b.ui_b1h3,b.ui_b1h4,b.ui_b1h5,b.ui_b1h6,b.ui_b1h7,b.ui_b1h8,b.ui_b1h9,
+-- b.ui_b1h10,b.ui_b1h11,b.ui_b1h12,b.ui_b1h13,b.ui_b1h14,b.ui_b1h15,b.ui_b1h16,b.ui_b1h17,b.ui_b1h18,b.ui_b1h19,
+-- b.ui_b1h20,b.ui_b1h21,b.ui_b1h22,b.ui_b1h23
+-- from temp1 a left outer join 17_ui_b1_hour_sum b
+-- on a.user_id=b.user_id and a.item_id=b.item_id;
+
+-- drop table if exists  temp3;
+-- create table temp3 as select 
+-- a.*,
+-- b.ui_b2h0,b.ui_b2h1,b.ui_b2h2,b.ui_b2h3,b.ui_b2h4,b.ui_b2h5,b.ui_b2h6,b.ui_b2h7,b.ui_b2h8,b.ui_b2h9,
+-- b.ui_b2h10,b.ui_b2h11,b.ui_b2h12,b.ui_b2h13,b.ui_b2h14,b.ui_b2h15,b.ui_b2h16,b.ui_b2h17,b.ui_b2h18,b.ui_b2h19,
+-- b.ui_b2h20,b.ui_b2h21,b.ui_b2h22,b.ui_b2h23
+-- from temp2 a left outer join 17_ui_b2_hour_sum b
+-- on a.user_id=b.user_id and a.item_id=b.item_id;
+
+-- drop table if exists  temp4;
+-- create table temp4 as select 
+-- a.*,
+-- b.ui_b3h0,b.ui_b3h1,b.ui_b3h2,b.ui_b3h3,b.ui_b3h4,b.ui_b3h5,b.ui_b3h6,b.ui_b3h7,b.ui_b3h8,b.ui_b3h9,
+-- b.ui_b3h10,b.ui_b3h11,b.ui_b3h12,b.ui_b3h13,b.ui_b3h14,b.ui_b3h15,b.ui_b3h16,b.ui_b3h17,b.ui_b3h18,b.ui_b3h19,
+-- b.ui_b3h20,b.ui_b3h21,b.ui_b3h22,b.ui_b3h23
+-- from temp3 a left outer join 17_ui_b3_hour_sum b
+-- on a.user_id=b.user_id and a.item_id=b.item_id;
+
+-- drop table if exists  temp5;
+-- create table temp5 as select 
+-- a.*,b.ua_b1,b.ua_b2,b.ua_b3
+-- from temp4 a left outer join 17_ua_behavior_sum b
+-- on a.user_id=b.user_id;
+
+-- drop table if exists  temp6;
+-- create table temp6 as select 
+-- a.*,
+-- b.b1h0,b.b1h1,b.b1h2,b.b1h3,b.b1h4,b.b1h5,b.b1h6,b.b1h7,b.b1h8,b.b1h9,
+-- b.b1h10,b.b1h11,b.b1h12,b.b1h13,b.b1h14,b.b1h15,b.b1h16,b.b1h17,b.b1h18,b.b1h19,
+-- b.b1h20,b.b1h21,b.b1h22,b.b1h23
+-- from temp5 a left outer join 17_ua_b1_hour_sum b
+-- on a.user_id=b.user_id;
+
+-- drop table if exists  temp7;
+-- create table temp7 as select 
+-- a.*,
+-- b.b2h0,b.b2h1,b.b2h2,b.b2h3,b.b2h4,b.b2h5,b.b2h6,b.b2h7,b.b2h8,b.b2h9,
+-- b.b2h10,b.b2h11,b.b2h12,b.b2h13,b.b2h14,b.b2h15,b.b2h16,b.b2h17,b.b2h18,b.b2h19,
+-- b.b2h20,b.b2h21,b.b2h22,b.b2h23
+-- from temp6 a left outer join 17_ua_b2_hour_sum b
+-- on a.user_id=b.user_id;
+
+-- drop table if exists  temp8;
+-- create table temp8 as select 
+-- a.*,
+-- b.b3h0,b.b3h1,b.b3h2,b.b3h3,b.b3h4,b.b3h5,b.b3h6,b.b3h7,b.b3h8,b.b3h9,
+-- b.b3h10,b.b3h11,b.b3h12,b.b3h13,b.b3h14,b.b3h15,b.b3h16,b.b3h17,b.b3h18,b.b3h19,
+-- b.b3h20,b.b3h21,b.b3h22,b.b3h23
+-- from temp7 a left outer join 17_ua_b3_hour_sum b
+-- on a.user_id=b.user_id;
+
+-- drop table if exists  temp9;
+-- create table temp9 as select 
+-- a.*,
+-- b.b4h0,b.b4h1,b.b4h2,b.b4h3,b.b4h4,b.b4h5,b.b4h6,b.b4h7,b.b4h8,b.b4h9,
+-- b.b4h10,b.b4h11,b.b4h12,b.b4h13,b.b4h14,b.b4h15,b.b4h16,b.b4h17,b.b4h18,b.b4h19,
+-- b.b4h20,b.b4h21,b.b4h22,b.b4h23
+-- from temp8 a left outer join 17_ua_b4_hour_sum b
+-- on a.user_id=b.user_id;
+
+-- drop table if exists  temp10;
+-- create table temp10 as select 
+-- a.*,b.u_b1,b.u_b2,b.u_b3,b.u_b4
+-- from temp9 a left outer join 17u_ever_behavior_sum b
+-- on a.user_id=b.user_id;
+
+-- drop table if exists  temp11;
+-- create table temp11 as select 
+-- a.*,b.i_b1,b.i_b2,b.i_b3,b.i_b4
+-- from temp10 a left outer join 17i_ever_behavior_sum b
+-- on a.item_id=b.item_id;
+
+-- ----5/30添加
+
+-- drop table if exists temp12;
+-- create table temp12 as select 
+-- a.*,b.liveday
+-- from temp11 a left outer join 17u_liveday b
+-- on a.user_id=b.user_id;
+
+-- drop table if exists temp13;
+-- create table temp13 as select
+-- a.*,b.ui_hb1,b.ui_hb2,b.ui_hb3,b.ui_hb4
+-- from temp12 a left outer join 17ui_history b
+-- on a.user_id=b.user_id and a.item_id=b.item_id;
+
+-- -----------data----label
+
+-- drop table 18buylabel;
+-- create table 18buylabel
+-- as select user_id,item_id, count(*) as label
+-- from 18buy group by user_id,item_id;
+
+-- drop table if exists datalabel17;
+-- create table  datalabel17
+-- as select a.*,b.label
+-- from temp13 a left outer join 18buylabel b
+-- on a.user_id=b.user_id and a.item_id=b.item_id;
+
+
+
+
+----6/6添加
+--新增加的特征只fuse到wepon_stack17_20w中
+drop table if exists tmp1;
+create table tmp1 as select a.*, b.ua_b4 from 
+wepon_stack17_20w a left outer join 17_ua_b4_sum b
+on a.user_id=b.user_id;
+
+drop table if exists tmp2;
+create table tmp2 as select a.*, b.item_category from 
+tmp1 a left outer join (select distinct user_id,item_id,item_category from date12_17) b
+on a.user_id=b.user_id and a.item_id=b.item_id;
+
+select count(*) from tmp2;
+
+drop table if exists tmp3;
+create table tmp3 as select a.*, b.uc_b1,b.uc_b2,b.uc_b3,b.uc_b4 from 
+tmp2 a left outer join 17_feature_uc b
+on a.item_category=b.item_category and a.user_id=b.user_id;
+
+select count(*) from tmp3;
+
+
+drop table if exists tmp4;
+create table tmp4 as select a.*, b.uc_hb1,b.uc_hb2,b.uc_hb3,b.uc_hb4 from 
+tmp3 a left outer join 17uc_history b
+on a.item_category=b.item_category and a.user_id=b.user_id;
+
+select count(*) from tmp4;
+
+
+drop table if exists tmp5;
+create table tmp5 as select a.*, b.buyday from 
+tmp4 a left outer join 17u_buyday b
+on a.user_id=b.user_id;
+
+select count(*) from tmp5;
+
+
+drop table if exists tmp6;
+create table tmp6 as select a.*, b.u3day_b1, b.u3day_b2, b.u3day_b3, b.u3day_b4 from 
+tmp5 a left outer join 17u_3day_behavior_sum b
+on a.user_id=b.user_id;
+
+select count(*) from tmp6;
+
+
+drop table if exists tmp7;
+create table tmp7 as select a.*, b.u7day_b1, b.u7day_b2, b.u7day_b3, b.u7day_b4 from 
+tmp6 a left outer join 17u_7day_behavior_sum b
+on a.user_id=b.user_id;
+
+select count(*) from tmp7;
+
+
+
+drop table if exists tmp8;
+create table tmp8 as select a.*, b.u14day_b1, b.u14day_b2, b.u14day_b3, b.u14day_b4 from 
+tmp7 a left outer join 17u_14day_behavior_sum b
+on a.user_id=b.user_id;
+
+select count(*) from tmp8;
+
+
+
+drop table if exists tmp9;
+create table tmp9 as select a.*, b.i3day_b1, b.i3day_b2, b.i3day_b3, b.i3day_b4 from 
+tmp8 a left outer join 17i_3day_behavior_sum b
+on a.item_id=b.item_id;
+
+select count(*) from tmp9;
+
+
+drop table if exists tmp10;
+create table tmp10 as select a.*, b.i7day_b1, b.i7day_b2, b.i7day_b3, b.i7day_b4 from 
+tmp9 a left outer join 17i_7day_behavior_sum b
+on a.item_id=b.item_id;
+
+select count(*) from tmp10;
+
+
+
+drop table if exists tmp11;
+create table tmp11 as select a.*, b.i14day_b1, b.i14day_b2, b.i14day_b3, b.i14day_b4 from 
+tmp10 a left outer join 17i_14day_behavior_sum b
+on a.item_id=b.item_id;
+
+select count(*) from tmp11;
+
+
+drop table if exists tmp12;
+create table tmp12 as select a.*, b.i_pplb1, b.i_pplb2, b.i_pplb3, b.i_pplb4 from 
+tmp11 a left outer join 17i_ppl_behavior_sum b
+on a.item_id=b.item_id;
+
+select count(*) from tmp12;
+
+
+
+drop table if exists tmp13;
+create table tmp13 as select a.*, b.u_item_hb1, b.u_item_hb2, b.u_item_hb3, b.u_item_hb4 from 
+tmp12 a left outer join 17u_item_behavior_sum b
+on a.user_id=b.user_id;
+
+select count(*) from tmp13;
+
+drop table if exists tmp14;
+create table tmp14 as select a.*, b.u_item_b1, b.u_item_b2, b.u_item_b3, b.u_item_b4 from 
+tmp13 a left outer join 17u_item_behavior_sum17 b
+on a.user_id=b.user_id;
+
+select count(*) from tmp14;
+
+
+drop table if exists tmp15;
+create table tmp15 as select a.*, b.u_category_hb1, b.u_category_hb2, b.u_category_hb3, b.u_category_hb4 from 
+tmp14 a left outer join 17u_category_behavior_sum b
+on a.user_id=b.user_id;
+
+select count(*) from tmp15;
+
+drop table if exists wepon_stack17_new20w;
+create table wepon_stack17_new20w as select a.*, b.u_category_b1, b.u_category_b2, b.u_category_b3,b.u_category_b4 from 
+tmp15 a left outer join 17u_category_behavior_sum17 b
+on a.user_id=b.user_id;
+
+select count(*) from wepon_stack17_new20w;

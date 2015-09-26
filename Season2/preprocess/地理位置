@@ -1,0 +1,11 @@
+-----------------------------------------------------
+--特征：uid与iid的地理距离
+------------------------------------------------------
+drop table if exists 17_feature_geo;
+create table 17_feature_geo
+	as select user_id, item_id, min(dis) as ui_dis from (
+		select ta.user_id, ta.item_id, tianchi_lbs:GeoDistUDF(ta.user_geohash, tb.item_geohash) as dis
+			from date12_17 ta
+			left outer join tianchi_lbs.tianchi_mobile_recommend_train_item tb
+			on ta.item_id=tb.item_id
+		) t group by user_id, item_id;

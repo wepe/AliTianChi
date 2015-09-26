@@ -1,0 +1,38 @@
+--统计一下连续两天买商品子集里的东西的有多少用户  10883
+select count(*) from
+(
+select distinct a.user_id 
+from
+(
+    select x.user_id,x.item_id from
+    (
+    select user_id,item_id
+    from tianchi_lbs.tianchi_mobile_recommend_train_user
+    where substr(time,1,10)="2014-12-17" and behavior_type=4
+    group by user_id,item_id
+    )x
+    join
+    (
+    select distinct item_id
+    from tianchi_lbs.tianchi_mobile_recommend_train_item
+    )y
+    on x.item_id=y.item_id
+)a
+join
+(
+    select w.user_id,w.item_id from
+    (
+    select user_id,item_id
+    from tianchi_lbs.tianchi_mobile_recommend_train_user
+    where substr(time,1,10)="2014-12-18" and behavior_type=4
+    group by user_id,item_id
+    )w
+    join
+    (
+    select distinct item_id
+    from tianchi_lbs.tianchi_mobile_recommend_train_item
+    )z
+    on w.item_id=z.item_id
+)b
+on a.user_id=b.user_id
+)c
