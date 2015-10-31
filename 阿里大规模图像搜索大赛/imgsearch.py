@@ -138,11 +138,8 @@ def imgsearch():
 
 
 """
-Oh my god!
-
-it is too big to generate descriptor
-
-have to calculate distance  one by one
+It is impossible to generate descriptor for all images and load into memory at a time.
+I have to calculate their distance  one by one, which is very very slow.
 """
 
 def slow_search_single(query_img):
